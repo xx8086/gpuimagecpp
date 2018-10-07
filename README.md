@@ -1,18 +1,18 @@
 
 
-* 现有的gpuimage使用起来还是复杂，想再简化一下；
+* 现有的gpuimage使用起来还是复杂，想再简化一下；
 * 现有gpuimage在开关切换一个filter的时候开销较大，而且需要队列的移除移入操作存在使用风险；
 * 现有gpuimage的ios和安卓各自实现不通用；
 
 # gpuimagecpp
 
 * 基于opengles3 
-* 实现了几个XXXFilter特效
+* 实现了几个XXXFilter特效
 * 使用和扩展都更简洁方便
 
 # 使用
 ```c++
-//继承Filter类，实现各自的render()函数
+//继承Filter类，实现各自的render()函数
 class ShakeFilter: public Filter{s
     public:
         gic_uint render(gic_uint textureid);
@@ -42,4 +42,4 @@ shake->visible();
 ```
 
 
-![image](https://github.com/xx8086/gpuimagecpp/master/20180927_gpuimagecpp.jpg)
+![image](https://github.com/xx8086/gpuimagecpp/blob/master/20180927_gpuimagecpp.jpg)
