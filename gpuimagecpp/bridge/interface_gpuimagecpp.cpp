@@ -22,14 +22,15 @@ namespace gpuimagecpp {
     }
     
     bool CInterfaceGpuImageCPP::init(const char* dir){
-        ShakeFilter* shake = new ShakeFilter();
-        OutSoulFilter* outsoul = new OutSoulFilter();
-        MultWindowFilter* mulwindwo = new MultWindowFilter();
         std::string strdir(dir);
         size_t dirlen = strdir.size();
         if(dirlen > 0 && '/' != strdir.at(dirlen - 1)){
             strdir.append("/");
-       }
+        }
+        
+        ShakeFilter* shake = new ShakeFilter();
+        OutSoulFilter* outsoul = new OutSoulFilter();
+        MultWindowFilter* mulwindwo = new MultWindowFilter();
         
         shake->init("ShakeFilter", strdir.data());
         outsoul->init("OutSoulFilter", strdir.data());
