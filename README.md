@@ -1,7 +1,7 @@
 
 
-* 现有的gpuimage使用起来还是复杂，想再简化一下；
-* 现有gpuimage在开关切换一个filter的时候开销较大，而且需要队列的移除移入操作存在使用风险；
+* 现有的gpuimage使用起来还是复杂，想再简化一下使用流程；
+* 现有gpuimage在开关切换一个filter的时候开销较大，而且需要队列的移除移入操作；
 * 现有gpuimage的ios和安卓各自实现不通用；
 
 # gpuimagecpp
@@ -42,4 +42,4 @@ shake->visible();
 ```
 
 
-![image](https://github.com/xx8086/gpuimagecpp/blob/master/20180927_gpuimagecpp.jpg)
+![image](https://github.com/xx8086/gpuimagecpp/blob/master/uml_gpuimagecpp_frame.jpg)
