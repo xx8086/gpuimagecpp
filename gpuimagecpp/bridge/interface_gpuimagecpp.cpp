@@ -12,6 +12,7 @@
 #include "../effects/mult_window_filter.hpp"
 #include "../effects/out_soul_filter.hpp"
 #include "../effects/shake_filter.hpp"
+#include "../effects/font_filter.hpp"
 
 namespace gpuimagecpp {
     CInterfaceGpuImageCPP::CInterfaceGpuImageCPP(){
@@ -22,24 +23,30 @@ namespace gpuimagecpp {
     }
     
     bool CInterfaceGpuImageCPP::init(const char* dir){
+        ShakeFilter* shake = new ShakeFilter();
+        OutSoulFilter* outsoul = new OutSoulFilter();
+        MultWindowFilter* mulwindwo = new MultWindowFilter();
+        FontFilter* font = new FontFilter();
+        
         std::string strdir(dir);
         size_t dirlen = strdir.size();
         if(dirlen > 0 && '/' != strdir.at(dirlen - 1)){
             strdir.append("/");
-        }
-        
-        ShakeFilter* shake = new ShakeFilter();
-        OutSoulFilter* outsoul = new OutSoulFilter();
-        MultWindowFilter* mulwindwo = new MultWindowFilter();
+       }
         
         shake->init("ShakeFilter", strdir.data());
         outsoul->init("OutSoulFilter", strdir.data());
         mulwindwo->init("MultWindowFilter", strdir.data());
-        
+        font->init("FontFilter", strdir.data());
+                   
         append_filter(shake->get_id());
         append_filter(outsoul->get_id());
         append_filter(mulwindwo->get_id());
+        append_filter(font->get_id());
         
+        //shake->invisible();
+        //outsoul->invisible();
+        mulwindwo->invisible();
         return true;
     }
     

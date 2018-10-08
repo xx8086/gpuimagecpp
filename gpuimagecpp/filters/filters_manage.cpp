@@ -53,13 +53,12 @@ namespace gpuimagecpp {
     }
 
     gic_uint FiltersManage::render(gic_uint textureid){
-        auto_lock();
+        //auto_lock();
         for(auto iter = _order_filters.begin();
             iter != _order_filters.end();
             iter++){
             if ((*iter)->enable()){
-                (*iter)->render(textureid);
-                textureid = (*iter)->get_texturid();
+                textureid = (*iter)->render(textureid);
             }
         }
         return textureid;

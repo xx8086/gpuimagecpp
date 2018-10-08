@@ -10,7 +10,7 @@
 
 namespace gpuimagecpp {
     MultWindowFilter::MultWindowFilter(){
-        _interval_ms = 1000;
+        _interval_ms = 1500;
         reset_configure();
     }
     

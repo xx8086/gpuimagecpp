@@ -27,7 +27,7 @@ namespace gpuimagecpp {
         
     public:
         gic_void resize(gic_int w, gic_int h);
-        gic_void init(const char*);
+        gic_void init(const char*, gic_float* = nullptr, gic_int = 0);
         gic_void use();
         gic_void unuse();
         gic_uint get_frameid();

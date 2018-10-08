@@ -32,10 +32,10 @@ namespace gpuimagecpp {
         GIC_DELETE_PTR(_timer)
     }
     
-    gic_void Filter::init(const char* filtername){
-        dynamic_cast<FrameBuffer*>(_framebuffer)->set_texture(GicSize(1280,720));//640, 1136
+    gic_void Filter::init(const char* filtername, gic_float* quads, gic_int nums){
+        dynamic_cast<FrameBuffer*>(_framebuffer)->set_texture(GicSize(720,1280));//640, 1136
         dynamic_cast<FrameBuffer*>(_framebuffer)->gen();
-        
+        dynamic_cast<FrameBuffer*>(_framebuffer)->gen_quad(quads, nums);
         std::hash<std::string> strhash;
         _hash_id = static_cast<gic_uint>(strhash(filtername));//2018.0910.每个filtername对应一个id,便于更高速的find
         Singleton<FiltersManage>::get_instance()->insert_filter(_hash_id, this);

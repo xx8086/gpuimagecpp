@@ -45,6 +45,7 @@ namespace gpuimagecpp {
         virtual gic_void bind_frame_buffer_id() = 0;
         virtual gic_void bind_default_frame_buffer_id() = 0;
         virtual gic_int  get_default_frame_buffer_id() = 0;
+        virtual gic_void gen_quad(gic_float*, gic_int nums) = 0;
     };
     
     class ObjectShader: public Object{

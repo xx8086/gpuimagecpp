@@ -1,9 +1,10 @@
-
+#version 300 es
 precision mediump float;
 precision mediump int;
-varying highp vec2 textureCoordinate;
+in vec2 textureCoordinate;
 uniform sampler2D inputImageTexture;
 uniform int window_counts;
+layout(location = 0) out vec4 FragColor;
 
 vec2 mapuv(vec2 uv,float range){
     float rate = (1.0 - 2.0 * range);
@@ -29,7 +30,7 @@ vec4 four(){
     if(tex.y > 1.0){
         tex.y = tex.y - 1.0;
     }
-    return texture2D(inputImageTexture, tex);
+    return texture(inputImageTexture, tex);
 }
 
 vec4 nine(){
@@ -47,19 +48,19 @@ vec4 nine(){
     else if(tex.y > 2.0){
         tex.y = tex.y - 2.0;
     }
-    return texture2D(inputImageTexture, tex);
+    return texture(inputImageTexture, tex);
 }
 
 void main(void){
     //vec4 sample_tex;
     if(4 == window_counts){
-        gl_FragColor = four();
+        FragColor = four();
     }
     else if(9 == window_counts){
-        gl_FragColor = nine();
+        FragColor = nine();
     }
     else{
-        gl_FragColor = texture2D(inputImageTexture, textureCoordinate);
+        FragColor = texture(inputImageTexture, textureCoordinate);
     }
-    //gl_FragColor = vec4(0.0, 1.0, 0.0, 1.0);
+
 }

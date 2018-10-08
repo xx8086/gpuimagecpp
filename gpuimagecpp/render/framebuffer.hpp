@@ -34,7 +34,7 @@ namespace gpuimagecpp {
         gic_void bind_render_buffer_id();
         gic_void bind_default_frame_buffer_id();
         gic_void gen(gic_bool open_render_buffer = false);
-        
+        gic_void gen_quad(gic_float* , gic_int nums);
     private:
         gic_bool get_pixels_from_framebuffers(gic_uint gltex, gic_void* dataPtr, gic_int width, gic_int height);
         gic_void gen_quad();
@@ -45,12 +45,13 @@ namespace gpuimagecpp {
         
     private:
         TextureEmpty _textures;
-        gic_bool _open_render_buffer = false;
+        gic_bool _open_render_buffer = true;
         gic_uint* _ids = nullptr;
         gic_byte* _images = nullptr;
         gic_uint _framebuffer_id = 0;
         gic_uint _renderbuffer_id = 0;
         gic_int _default_framebuffer_id = 0;
+        gic_int _quad_nums = 0;
         gic_uint _quad_vao;
         gic_uint _quad_vbo;
     };

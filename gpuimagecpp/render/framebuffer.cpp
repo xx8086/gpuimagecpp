@@ -104,14 +104,13 @@ namespace gpuimagecpp {
         return _framebuffer_id;
     }
     gic_void FrameBuffer::bind_quad(){
-        glBindVertexArray(_quad_vao);
-        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-        //glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(_quad_vao);//
+        //glDrawArrays(GL_TRIANGLE_STRIP, 0, _quad_nums);
+        glDrawArrays(GL_TRIANGLES, 0, _quad_nums);
         glBindVertexArray(0);
     }
     
     gic_void FrameBuffer::gen(gic_bool open_render_buffer){
-        gen_quad();
         if (0 == _framebuffer_id){
             glGenFramebuffers(1, &_framebuffer_id);
         }
@@ -131,22 +130,22 @@ namespace gpuimagecpp {
     gic_void FrameBuffer::gen_quad(){
         gic_float qua_vertices[] = {
             // positions        // texture Coords
-
+/*
             -1.0f,  1.0f, 0.0f, 0.0f, 1.0f,
             -1.0f, -1.0f, 0.0f, 0.0f, 0.0f,
             1.0f,  1.0f, 0.0f, 1.0f, 1.0f,
             1.0f, -1.0f, 0.0f, 1.0f, 0.0f,
-            /*
-            -1.0f,  1.0f,  0.0f, 0.0f, 1.0f,
-            -1.0f, -1.0f,  0.0f, 0.0f, 0.0f,
-            1.0f, -1.0f,  0.0f, 1.0f, 0.0f,
-            
-            -1.0f,  1.0f,  0.0f, 0.0f, 1.0f,
-            1.0f, -1.0f,  0.0f, 1.0f, 0.0f,
-            1.0f,  1.0f,  0.0f, 1.0f, 1.0f
-            */
+ */
+             -1.0f, -1.0f,  0.0f,  0.0f, 0.0f, // bottom-left
+             1.0f, -1.0f,   0.0f,  1.0f, 0.0f, // bottom-right
+             1.0f,  1.0f,   0.0f,  1.0f, 1.0f, // top-right
+             1.0f,  1.0f,   0.0f,  1.0f, 1.0f, // top-right
+             -1.0f,  1.0f,  0.0f,  0.0f, 1.0f, // top-left
+             -1.0f, -1.0f,  0.0f,  0.0f, 0.0f, // bottom-left
+ 
         };
         // setup plane VAO
+        _quad_nums = 6;
         glGenVertexArrays(1, &_quad_vao);
         glGenBuffers(1, &_quad_vbo);
         glBindVertexArray(_quad_vao);
@@ -156,9 +155,32 @@ namespace gpuimagecpp {
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
         glEnableVertexAttribArray(1);
         glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
         assert(GL_NO_ERROR == glGetError());
     }
+    gic_void FrameBuffer::gen_quad(gic_float* qua_vertices, gic_int nums){
+        // setup plane VAO
+        if(0 == nums){
+            gen_quad();
+        }
+        else{
+            _quad_nums = nums / 5;
+            glGenVertexArrays(1, &_quad_vao);
+            glGenBuffers(1, &_quad_vbo);
+            glBindVertexArray(_quad_vao);
+            glBindBuffer(GL_ARRAY_BUFFER, _quad_vbo);
+            glBufferData(GL_ARRAY_BUFFER, nums, &qua_vertices, GL_STATIC_DRAW);
+            glEnableVertexAttribArray(0);
+            glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+            glEnableVertexAttribArray(1);
+            glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+            glBindBuffer(GL_ARRAY_BUFFER, 0);
+            glBindVertexArray(0);
+            assert(GL_NO_ERROR == glGetError());
+        }
+    }
+    
     gic_void FrameBuffer::gen_texturebuffer(){
         assert(nullptr != _ids);
         gic_int counts = _textures.get_tex_counts();
@@ -168,7 +190,7 @@ namespace gpuimagecpp {
             attachments.emplace_back(GL_COLOR_ATTACHMENT0 + i);
         }
         if(counts > 1){
-            //glDrawBuffers(counts, attachments.data());
+            glDrawBuffers(counts, attachments.data());
         }
         
         glBindTexture(GL_TEXTURE_2D, 0);
@@ -179,7 +201,7 @@ namespace gpuimagecpp {
             if (0 == _renderbuffer_id)glGenRenderbuffers(1, &_renderbuffer_id);
             glBindRenderbuffer(GL_RENDERBUFFER, _renderbuffer_id);
             glRenderbufferStorage(GL_RENDERBUFFER,
-                                  GL_DEPTH_COMPONENT,//GL_DEPTH_COMPONENT32F
+                                  GL_DEPTH24_STENCIL8,
                                   _textures.get_width(),
                                   _textures.get_height());
             glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _renderbuffer_id);
