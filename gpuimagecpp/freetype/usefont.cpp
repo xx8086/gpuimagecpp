@@ -33,17 +33,18 @@ namespace gpuimagecpp {
             buffer = nullptr;
         }
     }
+    
     void Worlds::memcpbuffer(const unsigned  char* src){
         release();
         buffer = new unsigned char[width * rows * 4];
         memcpy(buffer, src, width * rows);
     }
     
-    void TextureFont::set_texture_id(unsigned int texid){
-        _textureId = texid;
-    }
-    
     TextureFont::~TextureFont(){
+        if (nullptr != _buffer){
+            delete [] _buffer;
+            _buffer = nullptr;
+        }
         release();
     }
     void TextureFont::release(){
@@ -66,8 +67,42 @@ namespace gpuimagecpp {
         assert(_library != 0 );
         
         FT_New_Face(_library,fontFile, 0, &_face);
-        FT_Set_Char_Size( _face, fontSize << 6, fontSize << 6, 72, 72);
+        //FT_Set_Char_Size( _face, _fontSize << 6, _fontSize << 6, 72, 72);
+        FT_Set_Pixel_Sizes(_face, _fontSize, 0);
         assert(_face != 0 );
+        
+        glGenTextures(1, &_textureId);
+        glBindTexture(GL_TEXTURE_2D, _textureId);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexImage2D(GL_TEXTURE_2D,
+                     0,
+                     GL_RGBA,
+                     FONT_WIDTH,
+                     FONT_HIGHT,
+                     0,
+                     GL_RGBA,
+                     GL_UNSIGNED_BYTE,
+                     nullptr);
+        assert(GL_NO_ERROR == glGetError());
+        glBindTexture(GL_TEXTURE_2D, 0);
+        _buffer = new unsigned char[FONT_WIDTH * FONT_HIGHT * 4];
+        memset(_buffer, 0, sizeof(unsigned char) * FONT_WIDTH * FONT_HIGHT * 4);
+    }
+    
+    void TextureFont::clear_texture(){
+        glBindTexture(GL_TEXTURE_2D, _textureId);
+        glTexSubImage2D(GL_TEXTURE_2D,
+                        0,
+                        0,
+                        0,
+                        FONT_WIDTH,
+                        FONT_HIGHT,
+                        GL_RGBA,
+                        GL_UNSIGNED_BYTE,
+                        _buffer);
     }
     
     Worlds TextureFont::find_world(wchar_t ch){
@@ -80,13 +115,11 @@ namespace gpuimagecpp {
             FT_Load_Glyph(_face, FT_Get_Char_Index(_face, ch), FT_RENDER_MODE_NORMAL);//
             FT_Glyph glyph;
             FT_Get_Glyph(_face->glyph, &glyph);
-            
+            //FT_Render_Glyph(_face->glyph, FT_RENDER_MODE_NORMAL);
             FT_Glyph_To_Bitmap(&glyph, ft_render_mode_normal, 0, 1);
             FT_BitmapGlyph bitmap_glyph = (FT_BitmapGlyph)glyph;
             FT_Bitmap& bitmap = bitmap_glyph->bitmap;
             if (bitmap.width != 0 || bitmap.rows != 0){
-                //bitmap_glyph->top;
-                //bitmap_glyph->left;
                 world.pitch = bitmap.pitch;
                 world.rows = bitmap.rows;
                 world.width = bitmap.width;
@@ -120,11 +153,11 @@ namespace gpuimagecpp {
         Worlds world = find_world(ch);
         if(world.width != 0 || world.rows != 0){
             glBindTexture(GL_TEXTURE_2D, _textureId);
-            glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+            //glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
             glTexSubImage2D(GL_TEXTURE_2D,
                             0,
                             _xStart,
-                            _yStart,
+                            _yStart + (_fontSize - world.rows),
                             world.width,
                             world.rows,
                             GL_RGBA,

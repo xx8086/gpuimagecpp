@@ -48,6 +48,13 @@ namespace gpuimagecpp {
     gic_bool FrameBuffer::bind_texture_buffer_id(gic_uint texture_unit){
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, texture_unit);
+        
+        int more_size = _vec_input_textures.size();
+        for(int i = 0; i < more_size; i++){
+            glActiveTexture(GL_TEXTURE1 + i);
+            glBindTexture(GL_TEXTURE_2D, _vec_input_textures[i]);
+        }
+        
         return true;
     }
     gic_uint FrameBuffer::get_texture_buffer_id(gic_int texture_index){
@@ -56,6 +63,10 @@ namespace gpuimagecpp {
             texture_id = *(_ids + texture_index);
         }
         return texture_id;
+    }
+    
+    gic_void FrameBuffer::append_texture_x(gic_uint textid){
+        _vec_input_textures.push_back(textid);
     }
     
     gic_bool FrameBuffer::get_pixels_from_framebuffers(gic_uint gltex, gic_void* dataPtr, gic_int width, gic_int height){

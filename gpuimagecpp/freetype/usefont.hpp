@@ -65,7 +65,7 @@ namespace gpuimagecpp {
         TextureFont(const char* fontFile,int fontSize);
         void drawText(float x, float y, std::wstring text);
         unsigned int get_texture_id();
-        void set_texture_id(unsigned int texid);
+        void clear_texture();
     private:
         void release();
         Worlds find_world(wchar_t ch);
@@ -78,6 +78,7 @@ namespace gpuimagecpp {
         int         _xStart;
         int         _fontSize;
         std::map<wchar_t, Worlds> _worlds;
+        unsigned char* _buffer = nullptr;
     };
 }
 

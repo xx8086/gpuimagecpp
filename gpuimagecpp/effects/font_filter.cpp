@@ -25,7 +25,6 @@ namespace gpuimagecpp {
     }
     
     gic_uint FontFilter::render(gic_uint textureid){
-        _font->set_texture_id(textureid);
         if (count_time()){
             switch(_sign){
                 case 0:
@@ -45,31 +44,48 @@ namespace gpuimagecpp {
             }
             set_count_time(_interval_ms);
         }
+        
+        std::wstring strcon;
         switch(_sign){
             case 0:
-                _font->drawText(150, 1100, L"科大讯飞@！#123ABCEfg");
+                strcon = L"科大讯飞@！#123ABCEfg";
                 break;
             case 1:
-                _font->drawText(150, 1100, L"发财致富奔小康");
+                strcon = L"发财致富，奔小康";
                 break;
             case 2:
-                _font->drawText(150, 1100, L"你好啊哈哈哈哈");
+                strcon = L"你好啊哈哈哈哈";
                 break;
             case 3:
-                _font->drawText(150, 1100, L"牛奶盒子");
+                strcon = L"牛奶盒子";
                 break;
                 default:
                 break;
         }
+        _font->clear_texture();
+        _font->drawText(100, 1000, strcon);
+        use();
+        textureid = Filter::draw(textureid);
+        unuse();
         
-        return _font->get_texture_id();
+        return textureid;
     }
+    
     gic_void FontFilter::init(const char* filtername, const char* dir){
+        std::string strvs(dir);
+        std::string strfs(dir);
+        strvs.append("default.vsh");
+        strfs.append("font.fsh");
+        Filter::loadshader(strvs, strfs);
+        Filter::init(filtername);
+        
         std::string strttf(dir);
         strttf.append("hz.ttc");
-        GLenum err1 = glGetError();
         _font = new TextureFont(strttf.c_str(), 56);
-        
-        Filter::init(filtername);
+        append_texture_x(_font->get_texture_id());
+        use();
+        set_uniformname_int("inputImageTexture", 0);
+        set_uniformname_int("worlds_texture", 1);
+        unuse();
     }
 }

@@ -122,4 +122,7 @@ namespace gpuimagecpp {
     gic_uint Filter::get_id()const{
         return _hash_id;
     }
+    gic_void Filter::append_texture_x(gic_uint textid){
+        dynamic_cast<FrameBuffer*>(_framebuffer)->append_texture_x(textid);
+    }
 }

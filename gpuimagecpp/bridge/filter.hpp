@@ -26,6 +26,7 @@ namespace gpuimagecpp {
         virtual gic_void reset_configure(){};
         
     public:
+        gic_void append_texture_x(gic_uint);
         gic_void resize(gic_int w, gic_int h);
         gic_void init(const char*, gic_float* = nullptr, gic_int = 0);
         gic_void use();

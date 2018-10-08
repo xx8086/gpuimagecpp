@@ -10,6 +10,7 @@
 #define FrameBuffer_hpp
 #include "../bridge/object.hpp"
 #include "texture.hpp"
+#include <vector>
 
 namespace gpuimagecpp {
     
@@ -31,6 +32,7 @@ namespace gpuimagecpp {
         virtual gic_bool bind_texture_buffer_id(gic_uint texture_unit);
         virtual gic_void bind_quad();
         virtual gic_void bind_frame_buffer_id();
+        gic_void append_texture_x(gic_uint);
         gic_void bind_render_buffer_id();
         gic_void bind_default_frame_buffer_id();
         gic_void gen(gic_bool open_render_buffer = false);
@@ -46,7 +48,8 @@ namespace gpuimagecpp {
     private:
         TextureEmpty _textures;
         gic_bool _open_render_buffer = true;
-        gic_uint* _ids = nullptr;
+        std::vector<gic_uint> _vec_input_textures;//GL_TEXTURE1,2,3...
+        gic_uint* _ids = nullptr;//输出texture list
         gic_byte* _images = nullptr;
         gic_uint _framebuffer_id = 0;
         gic_uint _renderbuffer_id = 0;
