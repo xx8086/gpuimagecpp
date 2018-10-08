@@ -13,7 +13,7 @@
 # 使用
 ```c++
 //继承Filter类，实现各自的render()函数
-class ShakeFilter: public Filter{s
+class ShakeFilter: public Filter{
     public:
         gic_uint render(gic_uint textureid);
 };
