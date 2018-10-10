@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,8 +19,6 @@
 		5A360B7720E4ACC50063A9FC /* guard1_helmet.tga in Resources */ = {isa = PBXBuildFile; fileRef = 5A360B7020E4ACAC0063A9FC /* guard1_helmet.tga */; };
 		5A360B7820E4ACC50063A9FC /* iron_grill.tga in Resources */ = {isa = PBXBuildFile; fileRef = 5A360B7120E4ACAC0063A9FC /* iron_grill.tga */; };
 		5A360B7920E4ACC50063A9FC /* round_grill.tga in Resources */ = {isa = PBXBuildFile; fileRef = 5A360B7220E4ACAC0063A9FC /* round_grill.tga */; };
-		5A435D0F2101CD53009308E8 /* tongue.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A435D0D2101CD52009308E8 /* tongue.png */; };
-		5A435D102101CD53009308E8 /* tooth.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A435D0E2101CD53009308E8 /* tooth.png */; };
 		5A594A3720E1E36900888446 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A594A3620E1E36900888446 /* AppDelegate.m */; };
 		5A594A3A20E1E36900888446 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5A594A3920E1E36900888446 /* ViewController.mm */; };
 		5A594A3D20E1E36900888446 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A594A3B20E1E36900888446 /* Main.storyboard */; };
@@ -87,8 +85,6 @@
 		5A360B7020E4ACAC0063A9FC /* guard1_helmet.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = guard1_helmet.tga; sourceTree = "<group>"; };
 		5A360B7120E4ACAC0063A9FC /* iron_grill.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = iron_grill.tga; sourceTree = "<group>"; };
 		5A360B7220E4ACAC0063A9FC /* round_grill.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = round_grill.tga; sourceTree = "<group>"; };
-		5A435D0D2101CD52009308E8 /* tongue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tongue.png; sourceTree = "<group>"; };
-		5A435D0E2101CD53009308E8 /* tooth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tooth.png; sourceTree = "<group>"; };
 		5A594A3220E1E36900888446 /* lhgl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lhgl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A594A3520E1E36900888446 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5A594A3620E1E36900888446 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -205,8 +201,6 @@
 				5AACDBC62122A91F00C704B9 /* fanbingbing.jpg */,
 				5AACDBC22122A5E700C704B9 /* IMG_0117.JPG */,
 				5AA3DF8A211AC46800A3FAC7 /* mnls.jpg */,
-				5A435D0D2101CD52009308E8 /* tongue.png */,
-				5A435D0E2101CD53009308E8 /* tooth.png */,
 				5ACA4F18210031550001DA2B /* niuyan.jpg */,
 				5A360B6B20E4ACAC0063A9FC /* md5 */,
 			);
@@ -394,7 +388,6 @@
 				5AC3B6C32107289F00C76EF6 /* megviifacepp_0_4_7_model in Resources */,
 				5AB09C1D21353BE80074B9C9 /* cube.vs in Resources */,
 				5AB09C2421353CD00074B9C9 /* framebuffers.vs in Resources */,
-				5A435D102101CD53009308E8 /* tooth.png in Resources */,
 				5AB09C2621353CD00074B9C9 /* framebuffers_screen.fs in Resources */,
 				5A594A4220E1E36900888446 /* LaunchScreen.storyboard in Resources */,
 				5A594A3F20E1E36900888446 /* Assets.xcassets in Resources */,
@@ -422,7 +415,6 @@
 				5ACA4F19210031550001DA2B /* niuyan.jpg in Resources */,
 				5A688EB421099956006E31D7 /* points.vs in Resources */,
 				5AB09C2521353CD00074B9C9 /* framebuffers.fs in Resources */,
-				5A435D0F2101CD53009308E8 /* tongue.png in Resources */,
 				5AC10EFE211D8C68003FDAE5 /* move_head.fs in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

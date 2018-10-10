@@ -154,18 +154,10 @@ int CRecognition::esMain (ESContext *esContext){
     _camera->set_proj_info(sp);
     _dir = esContext->appdir;
     std::string strimge_niuyan(esContext->appdir);
-    strimge_niuyan.append("/IMG_0117.JPG");//niuyan.jpg  //mnls.jpg //fanbingbing.jpg //IMG_0117.JPG
+    strimge_niuyan.append("/niuyan.jpg");//niuyan.jpg  //mnls.jpg //fanbingbing.jpg //IMG_0117.JPG
     _str_text = strimge_niuyan;
     if (!_texture.load_texture(strimge_niuyan)){
         printf("Error loading texture '%s'\n", strimge_niuyan.c_str());
-        assert(false);
-        return GL_FALSE;
-    }
-    
-    std::string strimge_tongue(esContext->appdir);
-    strimge_tongue.append("/tongue.png");
-    if (!_texture_tongue.load_texture(strimge_tongue)){
-        printf("Error loading texture '%s'\n", strimge_tongue.c_str());
         assert(false);
         return GL_FALSE;
     }
@@ -175,7 +167,7 @@ int CRecognition::esMain (ESContext *esContext){
     bind_frame();
     _face_shader.use();
     _face_shader.setint(_face_shader.getuniformlocation("imput_image_texture"), 0);
-    _face_shader.setint(_face_shader.getuniformlocation("tongue_image_texture"), 1);
+    //_face_shader.setint(_face_shader.getuniformlocation("tongue_image_texture"), 1);
     _face_shader.unuse();
     
     _face_shader_move_head.use();

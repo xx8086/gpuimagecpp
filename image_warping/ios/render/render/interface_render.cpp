@@ -11,10 +11,10 @@
 #include "gl_triangle.hpp"
 #include "bones.hpp"
 #include "tetris.hpp"
+#include "recognition.hpp"
 
-
-CTetris* get_render(){
-    return Singleton<CTetris>::get_instance();
+CRecognition* get_render(){
+    return Singleton<CRecognition>::get_instance();
     //return Singleton<CBones>::get_instance();
 }
 

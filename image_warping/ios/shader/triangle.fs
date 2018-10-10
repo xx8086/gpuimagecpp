@@ -8,7 +8,7 @@ uniform float screen_width;
 uniform float screen_hight;
 uniform float ratio;
 uniform sampler2D imput_image_texture;
-uniform sampler2D tongue_image_texture;
+//uniform sampler2D tongue_image_texture;
 
 uniform vec2 mouth_left;
 uniform vec2 mouth_right;
