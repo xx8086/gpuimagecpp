@@ -45,25 +45,24 @@ namespace gpuimagecpp {
             set_count_time(_interval_ms);
         }
         
-        std::wstring strcon;
         switch(_sign){
             case 0:
-                strcon = L"科大讯飞@！#123ABCEfg";
+                _str_worlds = L"科大讯飞@！#123ABCEfg";
                 break;
             case 1:
-                strcon = L"发财致富，奔小康";
+                _str_worlds = L"发财致富，奔小康";
                 break;
             case 2:
-                strcon = L"你好啊哈哈哈哈";
+                _str_worlds = L"你好啊哈哈哈哈";
                 break;
             case 3:
-                strcon = L"牛奶盒子";
+                _str_worlds = L"牛奶盒子";
                 break;
                 default:
                 break;
         }
         _font->clear_texture();
-        _font->drawText(100, 1000, strcon);
+        _font->drawText(_world_pos.x, _world_pos.y, _str_worlds);
         use();
         textureid = Filter::draw(textureid);
         unuse();
@@ -72,6 +71,13 @@ namespace gpuimagecpp {
     }
     
     gic_void FontFilter::init(const char* filtername, const char* dir){
+        _world_pos.x = 100;
+        _world_pos.y = 1000;
+        _world_color.x = 1.0;
+        _world_color.y = 1.0;
+        _world_color.z = 1.0;
+        
+        
         std::string strvs(dir);
         std::string strfs(dir);
         strvs.append("default.vsh");
@@ -86,6 +92,8 @@ namespace gpuimagecpp {
         use();
         set_uniformname_int("inputImageTexture", 0);
         set_uniformname_int("worlds_texture", 1);
+        set_uniformname_float3("world_color", _world_color.x, _world_color.y, _world_color.z);
         unuse();
+
     }
 }

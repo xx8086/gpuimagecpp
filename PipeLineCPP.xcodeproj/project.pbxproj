@@ -684,6 +684,11 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9846B32FFU;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/gpuimagecpp/freetype\"",
+					"\"$(SRCROOT)/gpuimagecpp/freetype/freetype2\"",
+					"\"$(SRCROOT)/gpuimagecpp/freetype/freetype2/freetype\"",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/gpuimagecpp/freetype",
@@ -701,6 +706,11 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9846B32FFU;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/gpuimagecpp/freetype\"",
+					"\"$(SRCROOT)/gpuimagecpp/freetype/freetype2\"",
+					"\"$(SRCROOT)/gpuimagecpp/freetype/freetype2/freetype\"",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/gpuimagecpp/freetype",

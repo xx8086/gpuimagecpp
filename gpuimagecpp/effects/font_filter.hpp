@@ -23,6 +23,10 @@ namespace gpuimagecpp {
     private:
         TextureFont*    _font;
         gic_int _sign = 0;
+
+        Vec2f _world_pos;
+        Vec3f _world_color;
+        std::wstring _str_worlds;
     };
 }
 
