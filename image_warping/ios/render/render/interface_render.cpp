@@ -13,8 +13,8 @@
 #include "tetris.hpp"
 #include "recognition.hpp"
 
-CRecognition* get_render(){
-    return Singleton<CRecognition>::get_instance();
+CBones* get_render(){
+    return Singleton<CBones>::get_instance();
     //return Singleton<CBones>::get_instance();
 }
 

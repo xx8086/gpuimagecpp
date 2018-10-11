@@ -20,6 +20,7 @@ CBones::~CBones(){
 void CBones::init(){
     glViewport (0, 0, _width, _height);
     glEnable(GL_DEPTH_TEST);
+    _quad.init(_dir.c_str());
 }
 
 void CBones::update(){
@@ -49,8 +50,10 @@ void CBones::resize(unsigned int w, unsigned int h){
 }
 
 void CBones::draw(){
+    GLenum err = glGetError();
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    _quad.draw_texture(get_video_frame_texture_id());
     
     _shader.use();
     std::vector<Mat4f> transform;
@@ -64,7 +67,7 @@ void CBones::draw(){
     Pipeline p;
     p.set_camera(Vec3f(0.0f, 0.0f, -10.0f), Vec3f(0.0f, 0.0f, 1.0f), Vec3f(0.0f, 1.0f, 0.0f));
     p.set_perspective_proj(_camera->get_proj_info());
-    p.scale(0.1);
+    p.scale(0.06);
     p.rotate(270.0, 180.0, 0.0);
     p.world_pos(0.0f, -2.0f, 0.0f);
     _shader.setmat4(_shader.getuniformlocation("pvw"), p.get_pvw_trans(), GL_TRUE);
@@ -88,7 +91,6 @@ int CBones::esMain (ESContext *esContext){
     
     std::string strmodel(esContext->appdir);
     strmodel.append("/boblampclean.md5mesh");
-    
     init();
     _camera = new Camera(Vec3f(0.0f, 0.0f, -10.0f));
     PersProjInfo sp;
@@ -98,13 +100,10 @@ int CBones::esMain (ESContext *esContext){
     sp.zNear = 0.1;
     sp.zFar = 100;
     _camera->set_proj_info(sp);
-    
-    
     _bones_mesh = new BonesMesh();
     _bones_mesh->loadmesh(strmodel);
     _shader.set_bones_counts(_bones_mesh->num_bones());
     _shader.bone_uniformlocation();
-    _shader.setint(_shader.getuniformlocation("gColorMap"), 0);
     resize(esContext->width, esContext->height);
 
     return GL_TRUE;

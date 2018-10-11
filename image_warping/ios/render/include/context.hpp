@@ -61,6 +61,7 @@
         
         void draw();
         void shutdown();
+        void video_frame(const unsigned char* datas, int w, int h);
         void keyboard(bool bchar, unsigned int uchar, unsigned int utype);
         void touch_event();
         void update();

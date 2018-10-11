@@ -206,25 +206,30 @@ const char* loadfile(const char* file){
     return str.c_str();
 }
 
+void ESContext::video_frame(const unsigned char* datas, int w, int h){
+    if (nullptr != render){
+        render->video_frame(datas, w, h);
+    }
+}
 void ESContext::draw(){
     if (nullptr != render){
         render->draw();
-    };
+    }
 }
 void ESContext::shutdown(){
     if (nullptr != render){
         render->shutdown();
-    };
+    }
 }
 void ESContext::keyboard(bool bchar, unsigned int uchar, unsigned int utype){
     if (nullptr != render){
         render->keyboard(bchar, uchar, utype);
-    };
+    }
 }
 void ESContext::touch_event(){
     if (nullptr != render){
         render->touch_event();
-    };
+    }
 }
 
 void ESContext::update(){
