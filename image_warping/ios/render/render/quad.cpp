@@ -36,24 +36,15 @@ void CQuad::gen_quad(){
     glBindVertexArray(0);
     assert(GL_NO_ERROR == glGetError());
 }
-void CQuad::draw_texture(unsigned int texture_unit){
-    if (0 == texture_unit){
-        return ;
-    }
-    glActiveTexture(GL_TEXTURE0);
+
+void CQuad::bind_texture(unsigned int active_texture, unsigned int texture_unit){
+    glActiveTexture(active_texture);
     glBindTexture(GL_TEXTURE_2D, texture_unit);
-    
-    _shader.use();
+}
+
+void CQuad::draw_texture(){
     glBindVertexArray(_vao);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     glBindVertexArray(0);
-    _shader.unuse();
 }
 
-void CQuad::init(const char* dir){
-    assert(_shader.loadshader(dir,
-                              "default.vs",
-                              "default.fs"));
-    
-    gen_quad();
-}

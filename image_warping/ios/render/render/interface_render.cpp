@@ -8,13 +8,12 @@
 
 #include "interface_render.hpp"
 #include "single.hpp"
-#include "gl_triangle.hpp"
 #include "bones.hpp"
 #include "tetris.hpp"
-#include "recognition.hpp"
+#include "font.hpp"
 
-CBones* get_render(){
-    return Singleton<CBones>::get_instance();
+CFont* get_render(){
+    return Singleton<CFont>::get_instance();
     //return Singleton<CBones>::get_instance();
 }
 

@@ -58,7 +58,8 @@
         EGLContext eglContext;
         EGLSurface eglSurface;
 #endif
-        
+        void set_color(float r, float g, float b);
+        void update_worlds(int x, int y, const wchar_t* worlds);
         void draw();
         void shutdown();
         void video_frame(const unsigned char* datas, int w, int h);

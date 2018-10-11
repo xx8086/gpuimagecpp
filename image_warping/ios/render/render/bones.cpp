@@ -20,7 +20,6 @@ CBones::~CBones(){
 void CBones::init(){
     glViewport (0, 0, _width, _height);
     glEnable(GL_DEPTH_TEST);
-    _quad.init(_dir.c_str());
 }
 
 void CBones::update(){
@@ -50,10 +49,8 @@ void CBones::resize(unsigned int w, unsigned int h){
 }
 
 void CBones::draw(){
-    GLenum err = glGetError();
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    _quad.draw_texture(get_video_frame_texture_id());
     
     _shader.use();
     std::vector<Mat4f> transform;

@@ -9,11 +9,13 @@
 #import "ViewController.h"
 #include "context.hpp"
 #include "interface_render.hpp"
-
+#include "../../render/render/core/timer.hpp"
 
 @interface ViewController () <AVCaptureVideoDataOutputSampleBufferDelegate>
 {
-    struct ESContext _esContext;}
+    struct ESContext _esContext;
+    Timer _timer;
+}
 @property (nonatomic,strong) AVCaptureSession *session;
 @property (nonatomic,strong) AVCaptureDevice *device;
 @property (nonatomic,strong) AVCaptureDeviceInput *input;
@@ -23,9 +25,10 @@
 @property (strong, nonatomic) EAGLContext *context;
 @property (strong, nonatomic) GLKBaseEffect *effect;
 
--(void) setupGL;
--(void) tearDownGL;
--(void) setupCamera;
+-(void) setup_gl;
+-(void) tear_down_gl;
+-(void) setup_camera;
+-(void) change_worlds;
 @end
 
 @implementation ViewController
@@ -45,8 +48,8 @@ int _height;
     view.context = self.context;
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
 
-    [self setupGL];
-    [self setupCamera];
+    [self setup_gl];
+    [self setup_camera];
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(locationChange:)];
     pan.delaysTouchesBegan = YES;
     [self.view addGestureRecognizer:pan];
@@ -77,7 +80,7 @@ int _height;
 }
 
 -(void) dealloc{
-    [self tearDownGL];
+    [self tear_down_gl];
     if (self.context == [EAGLContext currentContext]){
         [EAGLContext setCurrentContext:nil];
     }
@@ -92,7 +95,7 @@ int _height;
     
     if ([self isViewLoaded] && ([[self view] window] == nil)){
         self.view = nil;
-        [self tearDownGL];
+        [self tear_down_gl];
         
         if (self.context == [EAGLContext currentContext]){
             [EAGLContext setCurrentContext:nil];
@@ -102,7 +105,7 @@ int _height;
     }
 }
 
-- (void)setupCamera {
+- (void)setup_camera {
     self.queue = dispatch_queue_create("video_process",DISPATCH_QUEUE_SERIAL);
     self.session= [[AVCaptureSession alloc] init];
     self.session.sessionPreset = AVCaptureSessionPreset1280x720;
@@ -139,7 +142,7 @@ int _height;
     [self.session startRunning];
 }
 
--(void) setupGL{
+-(void) setup_gl{
     [EAGLContext setCurrentContext:self.context];
     memset(&_esContext, 0, sizeof(_esContext));
     NSString *dir = [[NSBundle mainBundle] bundlePath];
@@ -161,7 +164,7 @@ int _height;
     _esContext.height = 1136;//1136;
     _triangle.esMain(&_esContext);
 }
-- (void)tearDownGL
+- (void)tear_down_gl
 {
     [EAGLContext setCurrentContext:self.context];
     _esContext.shutdown();
@@ -173,6 +176,37 @@ int _height;
     //_esContext.keyboard(true, 0, 1);
 }
 
+-(void) change_worlds{
+    static int worlds_sign = 0;
+    if (_timer.count_time()){
+        switch(worlds_sign){
+            case 0:
+                worlds_sign =  1;
+                _esContext.set_color(1.0, 0.0, 0.0);
+                _esContext.update_worlds(100, 900, L"科大讯飞@！#123ABCEfg");
+                break;
+            case 1:
+                worlds_sign =  2;
+                _esContext.set_color(0.0, 1.0, 0.0);
+                _esContext.update_worlds(100, 900, L"发财致富，奔小康");
+                break;
+            case 2:
+                worlds_sign =  3;
+                _esContext.set_color(0.0, 0.0, 1.0);
+                _esContext.update_worlds(100, 900, L"你好啊哈哈哈哈");
+                break;
+            case 3:
+                worlds_sign =  0;
+                _esContext.set_color(1.0, 1.0, 0.0);
+                _esContext.update_worlds(100, 900, L"牛奶盒子");
+                break;
+            default:
+                break;
+        }
+        _timer.set_count_time(500);
+    }
+}
+
 -(void)glkView:(GLKView *)view drawInRect:(CGRect)rect{
     //printf("glkView:\t\t%x \t%x. \n", self.context, [EAGLContext currentContext]);
     _esContext.width = view.drawableWidth;
@@ -180,6 +214,8 @@ int _height;
     if (NULL != _image_address){
         _esContext.video_frame(_image_address, _width, _height);
     }
+    
+    [self change_worlds];
     _esContext.draw();
     
 }

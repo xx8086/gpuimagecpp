@@ -15,11 +15,10 @@ public:
     CQuad();
     ~CQuad();
 public:
-    void init(const char* dir);
     void gen_quad();
-    void draw_texture(unsigned int);
+    void bind_texture(unsigned int active_texture, unsigned int texture_unit);
+    void draw_texture();
 private:
-    CShader _shader;
     unsigned int _vao;
     unsigned int _vbo;
 };

@@ -33,7 +33,6 @@ private:
     virtual void touch_event();
     void resize(unsigned int w, unsigned int h);
 private:
-    CQuad _quad;
     BonesMesh* _bones_mesh = nullptr;
     Camera* _camera = nullptr;
     BonesShader _shader;

@@ -211,6 +211,19 @@ void ESContext::video_frame(const unsigned char* datas, int w, int h){
         render->video_frame(datas, w, h);
     }
 }
+
+void ESContext::update_worlds(int x, int y, const wchar_t* worlds){
+    if (nullptr != render){
+        render->draw_worlds(x, y, worlds);
+    }
+}
+
+void ESContext::set_color(float r, float g, float b){
+    if (nullptr != render){
+        render->set_color(r, g, b);
+    }
+}
+
 void ESContext::draw(){
     if (nullptr != render){
         render->draw();

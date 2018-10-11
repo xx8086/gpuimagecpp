@@ -24,6 +24,9 @@ public:
     virtual void shutdown() = 0;
     virtual void keyboard(bool bchar, unsigned int uchar, unsigned int utype) = 0;
     virtual void touch_event() = 0;
+    virtual void draw_worlds(int x, int y, const wchar_t* worlds){};
+    virtual void set_color(float r, float g, float b){};
+    
     unsigned int get_video_frame_texture_id()const;
     void video_frame(const unsigned char* datas, int w, int h);
     std::string get_dir()const;

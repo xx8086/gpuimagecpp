@@ -16,7 +16,6 @@
 #include "rander.hpp"
 #include "texture.hpp"
 #include "timer.hpp"
-#include "face_plusplus.hpp"
 #include "camera.hpp"
 #include "pipeline.hpp"
 #include "draw_grid.h"
