@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5A02B66520E47EA20022AAF7 /* librender.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A02B66720E47EA20022AAF7 /* librender.a */; };
+		5A31FC852170465400F1BCF1 /* bubble.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 5A31FC842170465400F1BCF1 /* bubble.fsh */; };
 		5A360B7320E4ACC50063A9FC /* boblampclean.md5anim in Resources */ = {isa = PBXBuildFile; fileRef = 5A360B6C20E4ACAC0063A9FC /* boblampclean.md5anim */; };
 		5A360B7420E4ACC50063A9FC /* boblampclean.md5mesh in Resources */ = {isa = PBXBuildFile; fileRef = 5A360B6D20E4ACAC0063A9FC /* boblampclean.md5mesh */; };
 		5A360B7520E4ACC50063A9FC /* guard1_body.tga in Resources */ = {isa = PBXBuildFile; fileRef = 5A360B6E20E4ACAC0063A9FC /* guard1_body.tga */; };
@@ -21,6 +22,7 @@
 		5A594A3F20E1E36900888446 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A594A3E20E1E36900888446 /* Assets.xcassets */; };
 		5A594A4220E1E36900888446 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A594A4020E1E36900888446 /* LaunchScreen.storyboard */; };
 		5A594A4520E1E36900888446 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A594A4420E1E36900888446 /* main.m */; };
+		5A7736F6217031A300674C7D /* love.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A7736F5217031A300674C7D /* love.png */; };
 		5A8C70DF20E1FEC900B421FD /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A594A6E20E1E54D00888446 /* GLKit.framework */; };
 		5A8C719220E2596000B421FD /* libz.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8C719120E2596000B421FD /* libz.1.tbd */; };
 		5AA3DF8B211AC46800A3FAC7 /* mnls.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5AA3DF8A211AC46800A3FAC7 /* mnls.jpg */; };
@@ -79,6 +81,7 @@
 		5A02B66320E473890022AAF7 /* rander.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = rander.hpp; sourceTree = "<group>"; };
 		5A02B66620E47EA20022AAF7 /* libassimp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libassimp.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A02B66720E47EA20022AAF7 /* librender.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = librender.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A31FC842170465400F1BCF1 /* bubble.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = bubble.fsh; sourceTree = "<group>"; };
 		5A360B6C20E4ACAC0063A9FC /* boblampclean.md5anim */ = {isa = PBXFileReference; lastKnownFileType = text; path = boblampclean.md5anim; sourceTree = "<group>"; };
 		5A360B6D20E4ACAC0063A9FC /* boblampclean.md5mesh */ = {isa = PBXFileReference; lastKnownFileType = text; path = boblampclean.md5mesh; sourceTree = "<group>"; };
 		5A360B6E20E4ACAC0063A9FC /* guard1_body.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = guard1_body.tga; sourceTree = "<group>"; };
@@ -99,6 +102,7 @@
 		5A594A4A20E1E36900888446 /* lhglTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = lhglTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A594A5520E1E36900888446 /* lhglUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = lhglUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A594A6E20E1E54D00888446 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		5A7736F5217031A300674C7D /* love.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = love.png; sourceTree = "<group>"; };
 		5A8C70EC20E2035D00B421FD /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		5A8C719120E2596000B421FD /* libz.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.tbd; path = usr/lib/libz.1.tbd; sourceTree = SDKROOT; };
 		5AA3DF8A211AC46800A3FAC7 /* mnls.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mnls.jpg; sourceTree = "<group>"; };
@@ -182,6 +186,7 @@
 		5A360B6A20E4ACAC0063A9FC /* res */ = {
 			isa = PBXGroup;
 			children = (
+				5A7736F5217031A300674C7D /* love.png */,
 				5AE9B5AA216F55ED00FDFD9D /* hz.ttc */,
 				5AB09C2721353FC60074B9C9 /* marble.jpg */,
 				5AB09C2821353FC60074B9C9 /* metal.png */,
@@ -265,6 +270,7 @@
 		5ADB4D44216E135A0070F672 /* shader */ = {
 			isa = PBXGroup;
 			children = (
+				5A31FC842170465400F1BCF1 /* bubble.fsh */,
 				5AE9B5A8216F14A900FDFD9D /* font.fsh */,
 				5ADB4D45216E135A0070F672 /* bicubic.fs */,
 				5ADB4D46216E135A0070F672 /* bttom_tertri.fs */,
@@ -408,6 +414,7 @@
 				5A594A3F20E1E36900888446 /* Assets.xcassets in Resources */,
 				5A594A3D20E1E36900888446 /* Main.storyboard in Resources */,
 				5ADB4D68216E135A0070F672 /* skinning.vs in Resources */,
+				5A7736F6217031A300674C7D /* love.png in Resources */,
 				5ADB4D6A216E135A0070F672 /* triangle.vs in Resources */,
 				5ADB4D65216E135A0070F672 /* points.fs in Resources */,
 				5ADB4D5B216E135A0070F672 /* cube.fs in Resources */,
@@ -433,6 +440,7 @@
 				5ADB4D5A216E135A0070F672 /* bttom_tertri.vs in Resources */,
 				5ACA4F19210031550001DA2B /* niuyan.jpg in Resources */,
 				5ADB4D66216E135A0070F672 /* points.vs in Resources */,
+				5A31FC852170465400F1BCF1 /* bubble.fsh in Resources */,
 				5ADB4D6E216E13BC0070F672 /* default.fs in Resources */,
 				5ADB4D61216E135A0070F672 /* grid.fs in Resources */,
 			);
@@ -624,6 +632,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CODE_SIGN_STYLE = Automatic;
 				CONFIGURATION_BUILD_DIR = "~/render_bin";
 				CONFIGURATION_TEMP_DIR = "~/render_bin";
@@ -645,6 +654,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CODE_SIGN_STYLE = Automatic;
 				CONFIGURATION_BUILD_DIR = "~/render_bin";
 				CONFIGURATION_TEMP_DIR = "~/render_bin";

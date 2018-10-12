@@ -1,24 +1,22 @@
 //
-//  font.hpp
+//  bubble.hpp
 //  render
 //
-//  Created by liu on 2018/10/11.
+//  Created by liu on 2018/10/12.
 //  Copyright © 2018年 redliu. All rights reserved.
 //
 
-#ifndef font_hpp
-#define font_hpp
+#ifndef bubble_hpp
+#define bubble_hpp
 
 #include "context.hpp"
 #include "shader.hpp"
 #include "rander.hpp"
 #include "quad.hpp"
-#include "usefont.hpp"
-
-class CFont: public CRender{
+class CBubble: public CRender{
 public:
-    CFont();
-    ~CFont();
+    CBubble();
+    ~CBubble();
     int esMain(ESContext *esContext);
     
 public:
@@ -31,20 +29,13 @@ public:
     virtual void touch_event();
     
 public:
-    void set_color(float r, float g, float b);
-    void draw_worlds(int begin_x, int beign_y, const wchar_t* worlds);
     void resize(unsigned int w, unsigned int h);
-    //void reset_configure();
-    
 private:
-    TextureFont* _font;
-    unsigned int _font_texture_id = 0;
-    CQuad _quad;
+    void bindtexture();
+private:
+    unsigned int _love_texture;
     CShader _shader;
-    Vec2f _world_pos;
-    Vec3f _world_color;
-    std::wstring _str_worlds;
-    std::string _dir;
+    CQuad _quad;
+    vec2 _pos;
 };
-
-#endif /* font_hpp */
+#endif /* bubble_hpp */

@@ -11,9 +11,10 @@
 #include "bones.hpp"
 #include "tetris.hpp"
 #include "font.hpp"
+#include "bubble.hpp"
 
-CFont* get_render(){
-    return Singleton<CFont>::get_instance();
+CBubble* get_render(){
+    return Singleton<CBubble>::get_instance();
     //return Singleton<CBones>::get_instance();
 }
 

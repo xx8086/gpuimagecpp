@@ -21,6 +21,7 @@
 		5A5948E620E1DA2E00888446 /* shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A5948DC20E1DA2E00888446 /* shader.cpp */; };
 		5A594A2420E1DCF100888446 /* interface_render.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A594A2220E1DCF100888446 /* interface_render.cpp */; };
 		5A594BD820E1EA1100888446 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A594BD720E1EA1100888446 /* OpenGLES.framework */; };
+		5A7736F421702F3B00674C7D /* bubble.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A7736F221702F3B00674C7D /* bubble.cpp */; };
 		5A8C718520E228A300B421FD /* mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A8C718320E228A300B421FD /* mesh.cpp */; };
 		5A8C718820E228B100B421FD /* model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A8C718620E228B100B421FD /* model.cpp */; };
 		5AB09C0521350E390074B9C9 /* draw_grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AB09BE821350E380074B9C9 /* draw_grid.cpp */; };
@@ -85,6 +86,8 @@
 		5A594A2320E1DCF100888446 /* interface_render.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = interface_render.hpp; sourceTree = "<group>"; };
 		5A594A2720E1DE6800888446 /* single.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = single.hpp; sourceTree = "<group>"; };
 		5A594BD720E1EA1100888446 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		5A7736F221702F3B00674C7D /* bubble.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = bubble.cpp; sourceTree = "<group>"; };
+		5A7736F321702F3B00674C7D /* bubble.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = bubble.hpp; sourceTree = "<group>"; };
 		5A8C718320E228A300B421FD /* mesh.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mesh.cpp; sourceTree = "<group>"; };
 		5A8C718420E228A300B421FD /* mesh.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = mesh.hpp; sourceTree = "<group>"; };
 		5A8C718620E228B100B421FD /* model.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = model.cpp; sourceTree = "<group>"; };
@@ -271,6 +274,8 @@
 				5AB09C1021350E9E0074B9C9 /* tetris.hpp */,
 				5ADB4D41216E0FA80070F672 /* quad.cpp */,
 				5ADB4D42216E0FA80070F672 /* quad.hpp */,
+				5A7736F221702F3B00674C7D /* bubble.cpp */,
+				5A7736F321702F3B00674C7D /* bubble.hpp */,
 			);
 			path = render;
 			sourceTree = "<group>";
@@ -578,6 +583,7 @@
 				5A360BC020E4B0440063A9FC /* pipeline.cpp in Sources */,
 				5A34FAA620E3A901009D8EBF /* math.cpp in Sources */,
 				5A5948E120E1DA2E00888446 /* camera.cpp in Sources */,
+				5A7736F421702F3B00674C7D /* bubble.cpp in Sources */,
 				5AE9B5A6216F11AA00FDFD9D /* font.cpp in Sources */,
 				5AB09C0621350E390074B9C9 /* draw_tetri.cpp in Sources */,
 				5A5948E020E1DA2E00888446 /* context.cpp in Sources */,

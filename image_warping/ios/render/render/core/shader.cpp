@@ -174,6 +174,10 @@ void CShader::setvec3(const char* name, vec3 v3) const{
 void CShader::setvec3(const char* name, float x, float y, float z) const{
     setvec3(getuniformlocation(name), x, y, z);
 }
+
+void CShader::setvec2(const char* name, float x, float y) const{
+    setvec2(getuniformlocation(name), x, y);
+}
 void CShader::setfloat(const char* name, float value) const{
     setfloat(getuniformlocation(name), value);
 }

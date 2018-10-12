@@ -35,8 +35,10 @@ public:
     void setmat4(GLint location, const Mat4f &mat, GLboolean transpose = GL_TRUE) const;
     
     void setmat4(const char* name, const Mat4f &mat, GLboolean transpose = GL_TRUE) const;
+    void setvec2(const char* name, vec3 v3) const;
     void setvec3(const char* name, vec3 v3) const;
     void setvec3(const char* name, float x, float y, float z) const;
+    void setvec2(const char* name, float x, float y) const;
     void setfloat(const char* name, float value) const;
     void setint(const char* name, int value) const;
     

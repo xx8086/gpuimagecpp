@@ -215,7 +215,7 @@ int _height;
         _esContext.video_frame(_image_address, _width, _height);
     }
     
-    [self change_worlds];
+    //[self change_worlds];
     _esContext.draw();
     
 }
