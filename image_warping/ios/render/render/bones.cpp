@@ -49,9 +49,18 @@ void CBones::resize(unsigned int w, unsigned int h){
 }
 
 void CBones::draw(){
-    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+    glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glDisable(GL_DEPTH_TEST);
+    if (0 != _video_frame_texture_id){
+        _shader_real.use();
+        _quad.bind_texture(GL_TEXTURE0, _video_frame_texture_id);
+        _quad.draw_texture();
+        _shader_real.unuse();
+    }
     
+    glEnable(GL_DEPTH_TEST);
+    glClear(GL_DEPTH_BUFFER_BIT);
     _shader.use();
     std::vector<Mat4f> transform;
     static Timer seconds;
@@ -61,11 +70,13 @@ void CBones::draw(){
         _shader.set_bones_uniformlocation(i, transform[i]);
     }
     
+    static float rc = 1.0;
     Pipeline p;
     p.set_camera(Vec3f(0.0f, 0.0f, -10.0f), Vec3f(0.0f, 0.0f, 1.0f), Vec3f(0.0f, 1.0f, 0.0f));
     p.set_perspective_proj(_camera->get_proj_info());
     p.scale(0.06);
-    p.rotate(270.0, 180.0, 0.0);
+    p.rotate(270.0, 180.0 + rc++, 0.0);
+    //p.rotate(0.0, -120.0, 0.0);
     p.world_pos(0.0f, -2.0f, 0.0f);
     _shader.setmat4(_shader.getuniformlocation("pvw"), p.get_pvw_trans(), GL_TRUE);
     _bones_mesh->render();
@@ -85,8 +96,16 @@ int CBones::esMain (ESContext *esContext){
                                        "skinning.fs")){
         return GL_FALSE;
     }
+    if (GL_FALSE == _shader_real.loadshader(esContext->appdir,
+                                       "default.vs",
+                                       "default.fs")){
+        return GL_FALSE;
+    }
+    
+    
     
     std::string strmodel(esContext->appdir);
+    //strmodel.append("/small_dog.FBX");
     strmodel.append("/boblampclean.md5mesh");
     init();
     _camera = new Camera(Vec3f(0.0f, 0.0f, -10.0f));
@@ -102,6 +121,6 @@ int CBones::esMain (ESContext *esContext){
     _shader.set_bones_counts(_bones_mesh->num_bones());
     _shader.bone_uniformlocation();
     resize(esContext->width, esContext->height);
-
+    _quad.gen_quad();
     return GL_TRUE;
 }

@@ -239,6 +239,7 @@ bool BonesMesh::InitMaterials(const aiScene* pScene, const std::string& Filename
                     p = p.substr(2, p.size() - 2);
                 }
                 
+                //p = "SmallDog_diff.tga";
                 std::string FullPath = Dir + "/" + p;
                 _textures[i] = new TexureGl;
                 if (!_textures[i]->load_texture(FullPath)) {

@@ -30,6 +30,8 @@
 		5AB09C2921353FC70074B9C9 /* marble.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5AB09C2721353FC60074B9C9 /* marble.jpg */; };
 		5AB09C2A21353FC70074B9C9 /* metal.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AB09C2821353FC60074B9C9 /* metal.png */; };
 		5ACA4F19210031550001DA2B /* niuyan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5ACA4F18210031550001DA2B /* niuyan.jpg */; };
+		5ADA79F6217988AC00934518 /* small_dog.FBX in Resources */ = {isa = PBXBuildFile; fileRef = 5ADA79F4217988AC00934518 /* small_dog.FBX */; };
+		5ADA79F7217988AC00934518 /* SmallDog_diff.tga in Resources */ = {isa = PBXBuildFile; fileRef = 5ADA79F5217988AC00934518 /* SmallDog_diff.tga */; };
 		5ADB4D3E216DFF730070F672 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ADB4D3D216DFF730070F672 /* AVFoundation.framework */; };
 		5ADB4D40216DFFEF0070F672 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ADB4D3F216DFFEF0070F672 /* CoreMedia.framework */; };
 		5ADB4D58216E135A0070F672 /* bicubic.fs in Resources */ = {isa = PBXBuildFile; fileRef = 5ADB4D45216E135A0070F672 /* bicubic.fs */; };
@@ -112,6 +114,8 @@
 		5AB09C2B21354A700074B9C9 /* msg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = msg.h; sourceTree = "<group>"; };
 		5ACA4F18210031550001DA2B /* niuyan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = niuyan.jpg; sourceTree = "<group>"; };
 		5AD986C320EC66AE004256D0 /* libassimp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libassimp.a; path = ../3rd/libassimp.a; sourceTree = "<group>"; };
+		5ADA79F4217988AC00934518 /* small_dog.FBX */ = {isa = PBXFileReference; lastKnownFileType = file; path = small_dog.FBX; sourceTree = "<group>"; };
+		5ADA79F5217988AC00934518 /* SmallDog_diff.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = SmallDog_diff.tga; sourceTree = "<group>"; };
 		5ADB4D3D216DFF730070F672 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		5ADB4D3F216DFFEF0070F672 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		5ADB4D45216E135A0070F672 /* bicubic.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = bicubic.fs; sourceTree = "<group>"; };
@@ -186,6 +190,7 @@
 		5A360B6A20E4ACAC0063A9FC /* res */ = {
 			isa = PBXGroup;
 			children = (
+				5ADA79F3217988AC00934518 /* small_dog */,
 				5A7736F5217031A300674C7D /* love.png */,
 				5AE9B5AA216F55ED00FDFD9D /* hz.ttc */,
 				5AB09C2721353FC60074B9C9 /* marble.jpg */,
@@ -265,6 +270,15 @@
 				5A594A6E20E1E54D00888446 /* GLKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5ADA79F3217988AC00934518 /* small_dog */ = {
+			isa = PBXGroup;
+			children = (
+				5ADA79F4217988AC00934518 /* small_dog.FBX */,
+				5ADA79F5217988AC00934518 /* SmallDog_diff.tga */,
+			);
+			path = small_dog;
 			sourceTree = "<group>";
 		};
 		5ADB4D44216E135A0070F672 /* shader */ = {
@@ -439,6 +453,8 @@
 				5A360B7920E4ACC50063A9FC /* round_grill.tga in Resources */,
 				5ADB4D5A216E135A0070F672 /* bttom_tertri.vs in Resources */,
 				5ACA4F19210031550001DA2B /* niuyan.jpg in Resources */,
+				5ADA79F7217988AC00934518 /* SmallDog_diff.tga in Resources */,
+				5ADA79F6217988AC00934518 /* small_dog.FBX in Resources */,
 				5ADB4D66216E135A0070F672 /* points.vs in Resources */,
 				5A31FC852170465400F1BCF1 /* bubble.fsh in Resources */,
 				5ADB4D6E216E13BC0070F672 /* default.fs in Resources */,

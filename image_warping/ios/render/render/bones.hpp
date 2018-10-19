@@ -36,6 +36,8 @@ private:
     BonesMesh* _bones_mesh = nullptr;
     Camera* _camera = nullptr;
     BonesShader _shader;
+    CShader _shader_real;
+    CQuad _quad;
 };
 
 #endif /* bones_hpp */

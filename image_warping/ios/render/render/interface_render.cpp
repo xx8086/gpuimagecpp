@@ -13,8 +13,8 @@
 #include "font.hpp"
 #include "bubble.hpp"
 
-CBubble* get_render(){
-    return Singleton<CBubble>::get_instance();
+CBones* get_render(){
+    return Singleton<CBones>::get_instance();
     //return Singleton<CBones>::get_instance();
 }
 
